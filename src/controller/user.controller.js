@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const userModel = require('../model/user.model')
 
 const userController = {
@@ -20,18 +21,26 @@ const userController = {
       res.json(err)
     })
   },
+  detailName: (req, res) => {
+    const name = req.params.name
+    userModel.selectDetailName(name).then((result) => {
+      res.json(result.rows)
+    }).catch((err) => {
+      res.json(err)
+    })
+  },
   insert: (req, res) => {
-    const { id, name, email, phone, password } = req.body
-    userModel.store(id, name, email, phone, password).then((result) => {
+    const { id, name, email, phone, password, created_at } = req.body
+    userModel.store(id, name, email, phone, password, created_at).then((result) => {
       res.json(result)
     }).catch((err) => {
       res.json(err)
     })
   },
   update: (req, res) => {
-    const { name, email, phone, password } = req.body
+    const { name, email, phone, password, created_at } = req.body
     const id = req.params.id
-    userModel.update(id, name, email, phone, password).then((result) => {
+    userModel.update(id, name, email, phone, password, created_at).then((result) => {
       res.json(result)
     }).catch((err) => {
       res.json(err)

@@ -4,9 +4,9 @@ const db = require('../config/db')
 
 const commentModel = {
   // router list = liat is data di tb
-  selectAll: () => {
+  selectAll: (limit, offset) => {
     return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM tb_comment', (err, res) => {
+      db.query(`SELECT * FROM tb_comment ORDER BY id ASC LIMIT ${limit} OFFSET ${offset}`, (err, res) => {
         if (err) {
           reject(err)
         }
@@ -14,11 +14,21 @@ const commentModel = {
       })
     })
   },
-
-  // router insert
-  store: (id, id_user, id_recipe, comments) => {
+  // join 3 table
+  commentJoin: () => {
     return new Promise((resolve, reject) => {
-      db.query(`INSERT INTO tb_comment (id, id_user, id_recipe, comments) VALUES (${id}, '${id_user}', '${id_recipe}', '${comments}')`,
+      db.query('select tb_users.name, tb_recipe.title, tb_recipe.photo, tb_comment.comments from tb_comment inner join tb_recipe on tb_recipe.id = tb_comment.id_recipe inner join tb_users on tb_users.id = tb_comment.id_user;', (err, res) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(res)
+      })
+    })
+  },
+  // router insert
+  store: (id, id_user, id_recipe, comments, created_at) => {
+    return new Promise((resolve, reject) => {
+      db.query(`INSERT INTO tb_comment (id, id_user, id_recipe, comments, created_at) VALUES (${id}, '${id_user}', '${id_recipe}', '${comments}', '${created_at}')`,
         (err, res) => {
           if (err) {
             reject(err)

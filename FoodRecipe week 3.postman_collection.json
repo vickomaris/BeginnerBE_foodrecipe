@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "9c9dfc58-81ec-4115-8ba2-dfc88535a283",
+		"name": "FoodRecipe week 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13923673"
+	},
+	"item": [
+		{
+			"name": "foods",
+			"item": [
+				{
+					"name": "get recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/recipe/?limit=5&page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe",
+								""
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get detail recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/recipe/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get detail recipe title",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/recipe/ketoprak",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe",
+								"ketoprak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 9,\r\n    \"photo\": \"bakso.jpg\",\r\n    \"title\": \"bakso\",\r\n    \"ingredients\": \"daging sapi, tepung, air, kaldu\",\r\n    \"video\": \"bakso.mp4\",\r\n    \"created_at\": \"2022-09-19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/recipe",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update recipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"photo\": \"bakso.jpg\",\r\n            \"title\": \"bakso sapi\",\r\n            \"ingredients\": \"daging sapi, tepung, air, kaldu\",\r\n            \"video\": \"bakso.mp4\",\r\n            \"created_at\": \"2022-09-19\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/recipe/9",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/recipe/30",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recipe",
+								"30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "get comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/comment?limit=5&page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"id_user\": 2,\r\n    \"id_recipe\": 9,\r\n    \"comments\": \"enak tuh baksonya\",\r\n    \"created_at\": \"2022-09-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/comment/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "join3tb",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/comment/commentsjoin",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"comment",
+								"commentsjoin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/user/?limit=5&page=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								""
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get detail user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 25,\r\n    \"name\": \"gogo\",\r\n    \"email\": \"gogo@gmail.com\",\r\n    \"phone\": \"6243536235\",\r\n    \"password\": \"abcde\",\r\n    \"created_at\": \"2022-09-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 11,\r\n        \"name\": \"tono\",\r\n        \"email\": \"tono@gmail.com\",\r\n        \"phone\": \"213452135423\",\r\n        \"password\": \"abcde\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/user/11",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/user/19",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get detail user name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/user/rhefa",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"rhefa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

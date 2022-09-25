@@ -1,0 +1,140 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5
+-- Dumped by pg_dump version 14.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: tb_comment; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_comment (
+    id integer NOT NULL,
+    id_user integer,
+    id_recipe integer,
+    comments text,
+    created_at date
+);
+
+
+ALTER TABLE public.tb_comment OWNER TO postgres;
+
+--
+-- Name: tb_recipe; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_recipe (
+    id integer NOT NULL,
+    photo character varying(255),
+    title character varying(255),
+    ingredients text,
+    video character varying(255),
+    created_at date
+);
+
+
+ALTER TABLE public.tb_recipe OWNER TO postgres;
+
+--
+-- Name: tb_users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_users (
+    id integer NOT NULL,
+    name character varying(255),
+    email character varying(255),
+    phone character varying(14),
+    password character varying(50),
+    created_at date
+);
+
+
+ALTER TABLE public.tb_users OWNER TO postgres;
+
+--
+-- Data for Name: tb_comment; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_comment (id, id_user, id_recipe, comments, created_at) FROM stdin;
+1	1	1	resep nasgornya mantap, nasgor saya jadi next level	2022-09-19
+2	2	2	eennnaaaaaakkkkkkkk sotonya, resep sotonya mantul	2022-09-19
+3	1	4	enak tuh sate ayamnya	2022-09-19
+4	2	9	enak tuh baksonya	2022-09-18
+\.
+
+
+--
+-- Data for Name: tb_recipe; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_recipe (id, photo, title, ingredients, video, created_at) FROM stdin;
+8	ketoprak.jpg	ketoprak	lontong, bumbu kacang, bihun, kecap, telur	ketoprak.mp4	2022-09-19
+1	nasgor.jpg	nasi goreng spesial	nasi 1 telur, bakso, sosis, suiran ayam	nasgor.mp4	2022-09-19
+2	soto.jpg	soto 	bihun, kol, kaldu ayam, telur, daun bawang, suiran ayam	ayam bakar.mp4	2022-09-19
+3	burger.jpg	burger	roti, daging, telur, selada, timun, tomat, saos, mayo	burger.mp4	2022-09-19
+4	sateayam.jpg	sate ayam	ayam, bumbu kacang, kecap, sambal	sateayam.mp4	2022-09-19
+7	migoreng.jpg	migoreng	mie, kecap, ayam, bakso	migoreng.mp4	2022-09-19
+9	bakso.jpg	bakso sapi	daging sapi, tepung, air, kaldu	bakso.mp4	2022-09-19
+\.
+
+
+--
+-- Data for Name: tb_users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_users (id, name, email, phone, password, created_at) FROM stdin;
+1	vicko	vicko@gmail.com	081523456239	test	2022-09-19
+2	brandon	brandon@gmail.com	0815792340	abc123	2022-09-19
+3	iqbal	iqbal@gmail.com	0815942340	abcde	2022-09-19
+4	taufik	taufik@gmail.com	0815230245	12345	2022-09-19
+5	rhefa	rhefa@gmail.com	6243536235	abcde	2022-09-19
+10	ehfsefesf	wewfefewe@gmail.com	342435325	4444445324326	2022-09-19
+11	tono	tono@gmail.com	213452135423	abcde	2022-09-19
+25	gogo	gogo@gmail.com	6243536235	abcde	2022-09-18
+\.
+
+
+--
+-- Name: tb_comment tb_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_comment
+    ADD CONSTRAINT tb_comment_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tb_recipe tb_recipe_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_recipe
+    ADD CONSTRAINT tb_recipe_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tb_users tb_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_users
+    ADD CONSTRAINT tb_users_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

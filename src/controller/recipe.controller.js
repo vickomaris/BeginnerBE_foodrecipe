@@ -3,7 +3,10 @@ const recipeModel = require('../model/recipe.model')
 
 const recipeController = {
   list: (req, res) => {
-    recipeModel.selectAll()
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 5
+    const offset = (page - 1) * limit
+    recipeModel.selectAll(limit, offset)
       .then((result) => {
         res.json(result)
       }).catch((err) => {

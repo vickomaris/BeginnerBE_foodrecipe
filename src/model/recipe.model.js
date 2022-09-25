@@ -4,9 +4,9 @@ const db = require('../config/db')
 
 const recipeModel = {
   // router list
-  selectAll: () => {
+  selectAll: (limit, offset) => {
     return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM tb_recipe ORDER BY id ASC', (err, res) => {
+      db.query(`SELECT * FROM tb_recipe ORDER BY title ASC LIMIT ${limit} OFFSET ${offset}`, (err, res) => {
         if (err) {
           reject(err)
         }

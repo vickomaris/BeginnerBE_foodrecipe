@@ -3,7 +3,18 @@ const commentModel = require('../model/comment.model')
 
 const commentController = {
   list: (req, res) => {
-    commentModel.selectAll()
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 5
+    const offset = (page - 1) * limit
+    commentModel.selectAll(limit, offset)
+      .then((result) => {
+        res.json(result)
+      }).catch((err) => {
+        res.json(err)
+      })
+  },
+  join3: (req, res) => {
+    commentModel.commentJoin()
       .then((result) => {
         res.json(result)
       }).catch((err) => {
@@ -11,8 +22,8 @@ const commentController = {
       })
   },
   insert: (req, res) => {
-    const { id, id_user, id_recipe, comments } = req.body
-    commentModel.store(id, id_user, id_recipe, comments).then((result) => {
+    const { id, id_user, id_recipe, comments, created_at } = req.body
+    commentModel.store(id, id_user, id_recipe, comments, created_at).then((result) => {
       res.json(result)
     }).catch((err) => {
       res.json(err)
