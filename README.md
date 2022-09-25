@@ -10,7 +10,7 @@ This is a Back-End FoodRecipe. This is built using ExpressJS and PostgreSQL.
 ## Getting Started
 Installation
 
-- Clone this project with `git clone https://github.com/vickomaris/BE_FoodRecipe
+- Clone this project with `git clone https://github.com/vickomaris/BeginnerBE_foodrecipe
 
 - Install package required with ```npm install```
 
