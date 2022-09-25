@@ -3,7 +3,7 @@
 const db = require('../config/db')
 
 const commentModel = {
-  // router list = liat is data di tb.... test
+  // router list = liat is data di tb
   selectAll: (limit, offset) => {
     return new Promise((resolve, reject) => {
       db.query(`SELECT * FROM tb_comment ORDER BY id ASC LIMIT ${limit} OFFSET ${offset}`, (err, res) => {
